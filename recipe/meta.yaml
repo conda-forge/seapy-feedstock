@@ -1,29 +1,30 @@
-{% set version = "0.1.0" %}
+{% set version = "0.2.0" %}
 
 package:
   name: seapy
   version: {{ version }}
 
 source:
-  git_url: https://github.com/ocefpaf/seapy.git
-  git_tag: packaging
+  url: https://github.com/powellb/seapy/archive/{{ version }}.tar.gz
+  sha256: 440f2a0171f75988d7df162afdcfc938d2ba2e8b2740cb0ef9a65b7928981d49
 
 build:
   number: 0
   skip: True  # [osx or win or py2k]
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
     - python
-    - setuptools
-    - numpy x.x
+    - pip
+    - numpy 1.11.*
     - gcc  # [not win]
   run:
     - python
-    - numpy x.x
+    - numpy >=1.11
     - scipy
     - joblib
+    - h5py
     - netcdf4
     - matplotlib
     - basemap
@@ -39,8 +40,8 @@ test:
     - seapy.external.oalib
     - seapy.external.hindices
   commands:
-    - conda inspect linkages -p $PREFIX seapy  # [not win]
-    - conda inspect objects -p $PREFIX seapy  # [osx]
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: https://github.com/powellb/seapy/
