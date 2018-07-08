@@ -9,19 +9,21 @@ source:
   sha256: d79f64d14d29dab589a66aa90bd1f7555207bb665829470dba6516c72ebce738
 
 build:
-  number: 0
+  number: 1
   skip: True  # [osx or win or py2k]
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
+    - {{ compiler('fortran') }}
+    - {{ compiler('c') }}
+  host:
     - python
     - pip
-    - numpy 1.11.*
-    - gcc  # [not win]
+    - numpy 1.14.*
   run:
     - python
-    - numpy >=1.11
+    - numpy >=1.14
     - scipy
     - joblib
     - h5py
@@ -29,7 +31,6 @@ requirements:
     - matplotlib
     - basemap
     - numpy_groupies
-    - libgcc  # [not win]
 
 test:
   imports:
