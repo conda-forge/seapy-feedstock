@@ -1,4 +1,4 @@
-{% set version = "0.2.1" %}
+{% set version = "0.3.1" %}
 
 package:
   name: seapy
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://github.com/powellb/seapy/archive/{{ version }}.tar.gz
-  sha256: d79f64d14d29dab589a66aa90bd1f7555207bb665829470dba6516c72ebce738
+  sha256: 144fa4d3cd8cb7f80849f52f50497bd74619438bb1097f9f04baecd4680dea6d
 
 build:
-  number: 1
+  number: 0
   skip: True  # [osx or win or py2k]
   script: python -m pip install --no-deps --ignore-installed .
 
