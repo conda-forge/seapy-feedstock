@@ -1,4 +1,4 @@
-{% set version = "0.3.1" %}
+{% set version = "0.4.0" %}
 
 package:
   name: seapy
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://github.com/powellb/seapy/archive/{{ version }}.tar.gz
-  sha256: 144fa4d3cd8cb7f80849f52f50497bd74619438bb1097f9f04baecd4680dea6d
+  sha256: bd0031382433f6fb838057e820ef3a03d2df2f52df5f694780ddc11b52120941
 
 build:
-  number: 1000
+  number: 0
   skip: True  # [osx or win or py2k]
-  script: python -m pip install --no-deps --ignore-installed .
+  script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
   build:
@@ -23,7 +23,7 @@ requirements:
     - numpy 1.14.*
   run:
     - python
-    - numpy >=1.14
+    - {{ pin_compatible('numpy') }}
     - scipy
     - joblib
     - h5py
@@ -40,9 +40,6 @@ test:
     - seapy.model
     - seapy.external.oalib
     - seapy.external.hindices
-  commands:
-    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: https://github.com/powellb/seapy/
