@@ -1,4 +1,4 @@
-{% set version = "0.4.0" %}
+{% set version = "0.4.1" %}
 
 package:
   name: seapy
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/powellb/seapy/archive/{{ version }}.tar.gz
-  sha256: bd0031382433f6fb838057e820ef3a03d2df2f52df5f694780ddc11b52120941
+  sha256: b4af0c36174a14ed6943261321620cf4cea7aca7f2db925895027c7210e9a903
 
 build:
   number: 0
