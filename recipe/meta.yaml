@@ -9,8 +9,8 @@ source:
   sha256: b4af0c36174a14ed6943261321620cf4cea7aca7f2db925895027c7210e9a903
 
 build:
-  number: 0
-  skip: True  # [osx or win or py2k]
+  number: 1
+  skip: True  # [py2k]
   script: "{{ PYTHON }} -m pip install . --no-deps -vv"
 
 requirements:
@@ -20,17 +20,16 @@ requirements:
   host:
     - python
     - pip
-    - numpy 1.14.*
+    - numpy
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - scipy
-    - joblib
-    - h5py
-    - netcdf4
-    - matplotlib
     - basemap
+    - h5py
+    - joblib
+    - netcdf4
     - numpy_groupies
+    - scipy
 
 test:
   imports:
