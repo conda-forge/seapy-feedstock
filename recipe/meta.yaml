@@ -1,4 +1,4 @@
-{% set version = "0.4.1" %}
+{% set version = "0.5.0" %}
 
 package:
   name: seapy
@@ -6,14 +6,14 @@ package:
 
 source:
   url: https://github.com/powellb/seapy/archive/{{ version }}.tar.gz
-  sha256: b4af0c36174a14ed6943261321620cf4cea7aca7f2db925895027c7210e9a903
+  sha256: 78d7ba875f024028c582411eb55ba26701e4c393a1fdc5f02de2c4156f1917b7
 
 build:
-  number: 1
-  skip: True  # [py2k]
+  number: 0
+  skip: true  # [py2k]
   script:
     - rm "C:\ProgramData\Chocolatey\bin\gfortran.exe"  # [win]
-    - "{{ PYTHON }} -m pip install . --no-deps -vv"
+    - {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   build:
@@ -48,7 +48,7 @@ about:
   home: https://github.com/powellb/seapy/
   license: MIT
   license_file: LICENSE.txt
-  summary: 'State Estimation and Analysis in PYthon'
+  summary: State Estimation and Analysis in PYthon
 
 extra:
   recipe-maintainers:
