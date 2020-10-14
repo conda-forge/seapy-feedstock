@@ -9,7 +9,7 @@ source:
   sha256: 14e0db7b40a467e0482f0af85672873af05b1428b7ade85328d84aa3d19752bc
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py2k]
   script:
     - rm "C:\ProgramData\Chocolatey\bin\gfortran.exe"  # [win]
