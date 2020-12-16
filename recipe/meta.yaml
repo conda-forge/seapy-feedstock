@@ -1,4 +1,4 @@
-{% set version = "0.5.1" %}
+{% set version = "0.5.2" %}
 
 package:
   name: seapy
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://github.com/powellb/seapy/archive/{{ version }}.tar.gz
-  sha256: 14e0db7b40a467e0482f0af85672873af05b1428b7ade85328d84aa3d19752bc
+  sha256: 50d04a954e5638012d1baaf73b153de3bb0d5fded38554ef91ac5e6601a209cd
 
 build:
-  number: 2
+  number: 0
   skip: true  # [py2k]
   script:
     - rm "C:\ProgramData\Chocolatey\bin\gfortran.exe"  # [win]
