@@ -11,9 +11,7 @@ source:
 build:
   number: 0
   skip: true  # [py<37]
-  script:
-    - rm "C:\ProgramData\Chocolatey\bin\gfortran.exe"  # [win]
-    - {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
@@ -28,13 +26,14 @@ requirements:
     - python
     - {{ pin_compatible('numpy') }}
     - libflang  # [win and py3k]
-    - basemap
+    - cartopy
     - h5py
     - joblib
     - netcdf4
+    - numpy
     - numpy_groupies
-    - scipy
     - rich
+    - scipy
 
 test:
   imports:
