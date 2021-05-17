@@ -1,4 +1,4 @@
-{% set version = "0.7" %}
+{% set version = "0.8" %}
 
 package:
   name: seapy
@@ -6,14 +6,12 @@ package:
 
 source:
   url: https://github.com/powellb/seapy/archive/{{ version }}.tar.gz
-  sha256: fc5772be5a61c59b0b9f9e65a2a377120e527d37d2405488073f6ab47d156f0f
+  sha256: 391c22dcb0ef1b0d3bc3c43e13475b1c7c85d9201fcf08b344d0702e38e5346f
 
 build:
   number: 0
   skip: true  # [py<37]
-  script:
-    - rm "C:\ProgramData\Chocolatey\bin\gfortran.exe"  # [win]
-    - {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   build:
@@ -28,13 +26,14 @@ requirements:
     - python
     - {{ pin_compatible('numpy') }}
     - libflang  # [win and py3k]
-    - basemap
+    - cartopy
     - h5py
     - joblib
     - netcdf4
+    - numpy
     - numpy_groupies
-    - scipy
     - rich
+    - scipy
 
 test:
   imports:
