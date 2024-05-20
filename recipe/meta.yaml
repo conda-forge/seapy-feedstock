@@ -9,7 +9,7 @@ source:
   sha256: 3a66138fee42d9ffa3813d08844a2526f70d6e271688dda32b813777103f1c2d
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<37]
   script: {{ PYTHON }} -m pip install . -vv
 
@@ -17,6 +17,7 @@ requirements:
   build:
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - python
     - pip
@@ -24,7 +25,6 @@ requirements:
     - flang  # [win and py3k]
   run:
     - python
-    - {{ pin_compatible('numpy') }}
     - libflang  # [win and py3k]
     - cartopy
     - h5py
