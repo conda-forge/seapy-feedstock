@@ -9,18 +9,20 @@ source:
   sha256: 3a66138fee42d9ffa3813d08844a2526f70d6e271688dda32b813777103f1c2d
 
 build:
-  number: 0
-  skip: true  # [py<37]
-  script: {{ PYTHON }} -m pip install . -vv
+  number: 1
+  skip: true  # [py<37 or py>=312]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation 
 
 requirements:
   build:
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
   host:
     - python
+    - setuptools <65
     - pip
-    - numpy
+    - numpy <=1.26
     - flang  # [win and py3k]
   run:
     - python
@@ -30,7 +32,6 @@ requirements:
     - h5py
     - joblib
     - netcdf4
-    - numpy
     - numpy_groupies
     - rich
     - scipy
