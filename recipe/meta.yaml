@@ -19,7 +19,6 @@ requirements:
     - {{ stdlib('c') }}
   host:
     - python
-    - flang  # [win and py3k]
     - meson-python >=0.15.0
     - numpy >=2
     - pip
@@ -29,7 +28,6 @@ requirements:
     - cartopy
     - h5py
     - joblib
-    - libflang  # [win and py3k]
     - netcdf4
     - numpy
     - numpy_groupies
