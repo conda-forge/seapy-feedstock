@@ -10,7 +10,6 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<37 or py>=312]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -20,18 +19,19 @@ requirements:
     - {{ stdlib('c') }}
   host:
     - python
-    - setuptools <65
-    - pip
-    - numpy <=1.26
     - flang  # [win and py3k]
+    - meson-python >=0.15.0
+    - numpy >=2
+    - pip
+    - setuptools
   run:
     - python
-    - {{ pin_compatible('numpy') }}
-    - libflang  # [win and py3k]
     - cartopy
     - h5py
     - joblib
+    - libflang  # [win and py3k]
     - netcdf4
+    - numpy
     - numpy_groupies
     - rich
     - scipy
@@ -43,7 +43,6 @@ test:
     - seapy.roms
     - seapy.model
     - seapy.external.oalib
-    - seapy.external.hindices
 
 about:
   home: https://github.com/powellb/seapy/
