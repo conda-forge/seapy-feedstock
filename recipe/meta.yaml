@@ -10,13 +10,14 @@ source:
 
 build:
   number: 0
+  skip: True  # [win]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
-    - {{ compiler('fortran') }}  # [not win]
-    - {{ compiler('c') }}  # [not win]
-    - {{ stdlib('c') }}  # [not win]
+    - {{ compiler('fortran') }}
+    - {{ compiler('c') }}
+    - {{ stdlib('c') }}
   host:
     - python
     - meson-python >=0.15.0
