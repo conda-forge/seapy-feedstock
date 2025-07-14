@@ -14,9 +14,9 @@ build:
 
 requirements:
   build:
-    - {{ compiler('fortran') }}
-    - {{ compiler('c') }}
-    - {{ stdlib('c') }}
+    - {{ compiler('fortran') }}  # [not win]
+    - {{ compiler('c') }}  # [not win]
+    - {{ stdlib('c') }}  # [not win]
   host:
     - python
     - meson-python >=0.15.0
