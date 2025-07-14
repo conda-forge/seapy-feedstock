@@ -1,4 +1,4 @@
-{% set version = "1.1.8" %}
+{% set version = "1.2" %}
 
 package:
   name: seapy
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://github.com/powellb/seapy/archive/{{ version }}.tar.gz
-  sha256: 3a66138fee42d9ffa3813d08844a2526f70d6e271688dda32b813777103f1c2d
+  sha256: 8cd0a8b0c464d4b09deb7b9cd34687fcee8bef713bc9092ac7a11d1df48c221a
 
 build:
-  number: 1
-  skip: true  # [py<37 or py>=312]
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation 
+  number: 0
+  skip: True  # [win]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
@@ -20,18 +20,17 @@ requirements:
     - {{ stdlib('c') }}
   host:
     - python
-    - setuptools <65
+    - meson-python >=0.15.0
+    - numpy >=2
     - pip
-    - numpy <=1.26
-    - flang  # [win and py3k]
+    - setuptools
   run:
     - python
-    - {{ pin_compatible('numpy') }}
-    - libflang  # [win and py3k]
     - cartopy
     - h5py
     - joblib
     - netcdf4
+    - numpy
     - numpy_groupies
     - rich
     - scipy
@@ -43,7 +42,6 @@ test:
     - seapy.roms
     - seapy.model
     - seapy.external.oalib
-    - seapy.external.hindices
 
 about:
   home: https://github.com/powellb/seapy/
