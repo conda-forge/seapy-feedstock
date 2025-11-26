@@ -1,4 +1,4 @@
-{% set version = "1.2" %}
+{% set version = "1.2.1" %}
 
 package:
   name: seapy
@@ -6,11 +6,11 @@ package:
 
 source:
   url: https://github.com/powellb/seapy/archive/{{ version }}.tar.gz
-  sha256: 8cd0a8b0c464d4b09deb7b9cd34687fcee8bef713bc9092ac7a11d1df48c221a
+  sha256: c5eb7a43e3a90159605bdea7332150d8aa7b9c541c46dd9967bc8866a5757413
 
 build:
-  number: 1
-  skip: True  # [win]
+  number: 0
+  skip: true  # [win]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -30,7 +30,7 @@ requirements:
     - h5py
     - joblib
     - netcdf4
-    - numpy
+    - numpy >=1.19.5
     - numpy_groupies
     - rich
     - scipy
